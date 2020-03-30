@@ -4,11 +4,11 @@ const counter = (initial = 0, step = 1) => {
     let count = initial;
 
     return {
-        next() {
+        add() {
             return count += step;
         },
 
-        reset() {
+        clean() {
             return count = initial;
         }
     };
@@ -23,15 +23,15 @@ const $FB =document.querySelector('#FB');
 const $Clean =document.querySelector('#Clean');
 
 $VK.addEventListener('click', () => {
-    vkcounter.next();
+    vkcounter.add();
 });
 
 $FB.addEventListener('click', () => {
-    fbcounter.next();
+    fbcounter.add();
 });
 
 $Clean.addEventListener('click',() => {
-    vkcounter.reset(); 
-    fbcounter.reset(); 
+    vkcounter.clean(); 
+    fbcounter.clean(); 
 });
 
