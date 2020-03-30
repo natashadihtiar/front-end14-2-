@@ -1,28 +1,21 @@
 /* eslint-disable no-magic-numbers */
 /* eslint-disable no-unused-vars */
+const counter = (initial = 0, step = 1) => {
+    let count = initial;
 
-
-const counter = function() {
-    const clear= 0;
-    let count = +prompt ( 'Задайте начальные значения:' );
-    let step = +prompt ( 'Задайте шаг счетчика:' );
-    function changeBy(step) {
-        count += step;
-    }
     return {
-        adding: function() {
-            changeBy(step);
+        next() {
+            return count += step;
         },
-        value: function() {
-            return count;
-        },
-        cleaning: function() {
-            return count = 0;
+
+        reset() {
+            count = initial;
         }
     };
-}
-const vkcounter = counter();
-const fbcounter = counter();
+};
+
+const vkcounter = counter(4, 3);
+const fbcounter = counter(1, 1);
 const cleaner = counter();
 
 const $VK = document.querySelector('#VK') ;
@@ -30,15 +23,15 @@ const $FB =document.querySelector('#FB');
 const $Clean =document.querySelector('#Clean');
 
 $VK.addEventListener('click', () => {
-    vkcounter.adding();
-    console.log('VK:' + vkcounter.value());
+    console.log('VK:' + vkcounter.next());
 });
 
 $FB.addEventListener('click', () => {
-    fbcounter.adding();
-    console.log('FB:' + fbcounter.value());
+    console.log('FB:' + fbcounter.next());
 });
+
 $Clean.addEventListener('click',() => {
-    console.log(cleaner.cleaning()); 
+    console.log(cleaner.reset()); 
 });
+
 
