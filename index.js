@@ -10,7 +10,7 @@ const counter = function() {
         count += step;
     }
     return {
-        increment: function() {
+        adding: function() {
             changeBy(step);
         },
         value: function() {
@@ -30,12 +30,12 @@ const $FB =document.querySelector('#FB');
 const $Clean =document.querySelector('#Clean');
 
 $VK.addEventListener('click', () => {
-    vkcounter.increment();
+    vkcounter.adding();
     console.log('VK:' + vkcounter.value());
 });
 
 $FB.addEventListener('click', () => {
-    fbcounter.increment();
+    fbcounter.adding();
     console.log('FB:' + fbcounter.value());
 });
 $Clean.addEventListener('click',() => {
